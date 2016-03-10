@@ -10,11 +10,15 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/book/create', 'BookController@postCreate');
     Route::get('/book/{id}', 'BookController@getShow');
 
+    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+    
     Route::get('/practice', function() {
 
-        echo config('app.url');
-        return '';
+        $random = new Random();
+        return $random->getRandomString(8);
 
-    });
+
+        });
+
 
 });
